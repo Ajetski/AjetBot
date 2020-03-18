@@ -1,1 +1,1 @@
-a discord bot for Ajet
+AjetBot is a bot for discord.
