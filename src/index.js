@@ -1,14 +1,25 @@
+/*
+Author: Adam Jeniski
+Project: AjetBot
+File: src/index.js
+
+GitHub Repo: https://github.com/Ajetski/AjetBot
+
+Documentation Referenced: https://discord.js.org/
+
+*/
+
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
 require('dotenv').config();
 
+client.login(process.env.BOT_TOKEN);
+
 client.once('ready', () => {
 	console.log('Working!!!');
 });
-
-client.login(process.env.BOT_TOKEN);
 
 client.on('message', msg => {
 	if(msg.content.match(/^!ping$/)){
