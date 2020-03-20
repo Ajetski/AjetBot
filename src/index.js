@@ -11,7 +11,8 @@ Documentation Referenced: https://discord.js.org/
 
 const { exec } = require('child_process');
 const Discord = require('discord.js');
-
+const fs = require('fs');
+const path = require('path');
 const client = new Discord.Client();
 
 require('dotenv').config();
@@ -90,7 +91,7 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
-	if(msg.content.match(/^!pepe$/) || msg.content.match(/^!feelsbadman$/)){
+	if(msg.content.match(msg.content.match(/^!feelsbadman$/))){
 		const attachment = new Discord.MessageAttachment('./src/media/feelBad.png');
 		msg.channel.send(attachment);
 	}
@@ -192,12 +193,19 @@ client.on('message', msg => {
 	
 	if(msg.content.match(/^!wojack$/)){
 
-		var fs = require('fs');
-		var path = require('path');
 		var wojacksPath = path.join(process.cwd(), 'src/media/Wojacks');
 		var files = fs.readdirSync(wojacksPath);
 		var chosenFile = files[Math.floor(Math.random()*files.length)];
 		const attachment = new Discord.MessageAttachment(path.join(wojacksPath, chosenFile));
+		msg.channel.send(attachment);
+	}
+
+	else if(msg.content.match(/^!pepe$/)){
+
+		
+		files = fs.readdirSync(path.join(__dirname,'media/Pepes'));
+		chosenFile = files[Math.floor(Math.random()*files.length)];
+		const attachment = new Discord.MessageAttachment(path.join(__dirname, 'media/Pepes/', chosenFile));
 		msg.channel.send(attachment);
 	}
 
