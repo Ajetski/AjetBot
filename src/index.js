@@ -150,5 +150,10 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
+	if(msg.content.match(/^!moon2l$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/moon2l.png');
+		msg.channel.send(attachment);
+	}
+
 
 });
