@@ -9,6 +9,7 @@ Documentation Referenced: https://discord.js.org/
 
 */
 
+const { exec } = require('child_process');
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
@@ -32,6 +33,10 @@ client.on('message', msg => {
 	*/
 	if(msg.content.match(/^!ping$/)){
 		msg.reply('pong');
+	}
+
+	if(msg.content.match(/^!update$/)){
+		exec('../deploy/deploy.sh');
 	}
 
 	/*
@@ -155,5 +160,31 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
+	if(msg.content.match(/^!pregigi$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/pregigi.png');
+		msg.channel.send(attachment);
+	}
+
+	if(msg.content.match(/^!pregario$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/pregario.png');
+		msg.channel.send(attachment);
+	}
+
+	if(msg.content.match(/^!moon2Boo$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/moon2Boo.png');
+		msg.channel.send(attachment);
+	}
+
+	if(msg.content.match(/^!poggy$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/moon2Poggy.png');
+		msg.channel.send(attachment);
+	}
+
+	if(msg.content.match(/^!illuminati$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/illuminati.png');
+		msg.channel.send(attachment);
+	}
+
+	
 
 });
