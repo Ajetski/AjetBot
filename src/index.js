@@ -36,6 +36,7 @@ client.on('message', msg => {
 	}
 
 	if(msg.content.match(/^!update$/)){
+		msg.reply('Updating...');
 		exec('../deploy/deploy.sh');
 	}
 
