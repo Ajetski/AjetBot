@@ -187,7 +187,7 @@ client.on('message', msg => {
 	}
 	
 	if(msg.content.match(/^!wojack$/)){
-		var fs = reauitre('fs'):
+		var fs = require('fs'):
 		var files = fs.readdirSync('./src/media/Wojacks/');
 		chosenFile = files[Math.floor(Math.random()*files.length)]
 		const attachment = new Discord.MessageAttachment(chosenFile);
