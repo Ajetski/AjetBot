@@ -185,7 +185,13 @@ client.on('message', msg => {
 		const attachment = new Discord.MessageAttachment('./src/media/illuminati.png');
 		msg.channel.send(attachment);
 	}
-
 	
+	if(msg.content.match(/^!wojack$/)){
+		var fs = reauitre('fs'):
+		var files = fs.readdirSync('./src/media/Wojacks/');
+		chosenFile = files[Math.floor(Math.random()*files.length)]
+		const attachment = new Discord.MessageAttachment(chosenFile);
+		msg.channel.send(attachment);
+	}
 
 });
