@@ -31,7 +31,7 @@ client.on('message', msg => {
 		TEST
 	============
 	*/
-	if(msg.content.match(/^!ping$/)){
+	if(msg.content.match(/^!ping$/,"i")){
 		msg.reply('pong');
 	}
 
@@ -57,12 +57,16 @@ client.on('message', msg => {
 		msg.channel.send('sup <@340249267769835520>');
 	}
 
-	if(msg.content.match(/^!caleb$/) || msg.content.match(/^!kleb$/)) {
+	if(msg.content.match(/^!caleb$/) || msg.content.match(/^!kleb$/) || msg.content.match(/^!daddy$/)) {
 		msg.channel.send('sup <@215636797189914625>');
 	}
 
-	if(msg.content.match(/^!nj$/)){
-		msg.channel.send('░░░░░░░░░░░█▀<@190541326087880705>█░░░░\n░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░\n░░░░░░█░█░░░░░░░░░░▐░░░\n░░░░░░▐▐░░░░░░░░░▄░▐░░░\n░░░░░░█░░░░░░░░▄▀▀░▐░░░\n░░░░▄▀░░░░░░░░▐░▄▄▀░░░░\n░░▄▀░░░▐░░░░░█▄▀░▐░░░░░\n░░█░░░▐░░░░░░░░▄░█░░░░░\n░░░█▄░░▀▄░░░░▄▀▐░█░░░░░\n░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░\n░░▐█▐▄░░▀░░░░░░▐░█▄▄░░░\n░░░▀▀░  <@139109067527290880>  ░░░▐▄▄▄▀░░░\n░░░░░░░░░░░░░░░░░░░░░░░');
+	if(msg.content.match(/^!nj$/)) {
+		msg.channel.send('sup <@139109067527290880>');
+	}
+
+	if(msg.content.match(/^!getshiton$/)){
+		msg.channel.send('░░░░░░░░░░░█▀<@215636797189914625>█░░░░\n░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░\n░░░░░░█░█░░░░░░░░░░▐░░░\n░░░░░░▐▐░░░░░░░░░▄░▐░░░\n░░░░░░█░░░░░░░░▄▀▀░▐░░░\n░░░░▄▀░░░░░░░░▐░▄▄▀░░░░\n░░▄▀░░░▐░░░░░█▄▀░▐░░░░░\n░░█░░░▐░░░░░░░░▄░█░░░░░\n░░░█▄░░▀▄░░░░▄▀▐░█░░░░░\n░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░\n░░▐█▐▄░░▀░░░░░░▐░█▄▄░░░\n░░░▀▀░  <@152850062228193280>  ░░░▐▄▄▄▀░░░\n░░░░░░░░░░░░░░░░░░░░░░░');
 	}
 	/*
 	============
@@ -176,7 +180,7 @@ client.on('message', msg => {
 	}
 
 	if(msg.content.match(/^!poggy$/)){
-		const attachment = new Discord.MessageAttachment('./src/media/moon2Poggy.png');
+		const attachment = new Discord.MessageAttachment('./src/media/moon2poggy.png');
 		msg.channel.send(attachment);
 	}
 
@@ -184,7 +188,4 @@ client.on('message', msg => {
 		const attachment = new Discord.MessageAttachment('./src/media/illuminati.png');
 		msg.channel.send(attachment);
 	}
-
-	
-
 });
