@@ -68,7 +68,7 @@ client.on('message', msg => {
 	}
 
 	if(msg.content.match(/^!getshiton$/)){
-		msg.channel.send('░░░░░░░░░░░█▀<@215636797189914625>█░░░░\n░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░\n░░░░░░█░█░░░░░░░░░░▐░░░\n░░░░░░▐▐░░░░░░░░░▄░▐░░░\n░░░░░░█░░░░░░░░▄▀▀░▐░░░\n░░░░▄▀░░░░░░░░▐░▄▄▀░░░░\n░░▄▀░░░▐░░░░░█▄▀░▐░░░░░\n░░█░░░▐░░░░░░░░▄░█░░░░░\n░░░█▄░░▀▄░░░░▄▀▐░█░░░░░\n░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░\n░░▐█▐▄░░▀░░░░░░▐░█▄▄░░░\n░░░▀▀░  <@152850062228193280>  ░░░▐▄▄▄▀░░░\n░░░░░░░░░░░░░░░░░░░░░░░');
+		msg.channel.send('░░░░░░░░░░░█▀<@', msg.author.id, '>█░░░░\n░░░░░░▄▀▀▀▀░░░░░█▄▄░░░░\n░░░░░░█░█░░░░░░░░░░▐░░░\n░░░░░░▐▐░░░░░░░░░▄░▐░░░\n░░░░░░█░░░░░░░░▄▀▀░▐░░░\n░░░░▄▀░░░░░░░░▐░▄▄▀░░░░\n░░▄▀░░░▐░░░░░█▄▀░▐░░░░░\n░░█░░░▐░░░░░░░░▄░█░░░░░\n░░░█▄░░▀▄░░░░▄▀▐░█░░░░░\n░░░█▐▀▀▀░▀▀▀▀░░▐░█░░░░░\n░░▐█▐▄░░▀░░░░░░▐░█▄▄░░░\n░░░▀▀░  <@152850062228193280>  ░░░▐▄▄▄▀░░░\n░░░░░░░░░░░░░░░░░░░░░░░');
 	}
 	/*
 	============
@@ -101,7 +101,7 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
-	if(msg.content.match(/^!trump$/) || msg.content.match(/^!ha$/) || msg.content.match(/^!drump$/)){
+	if(msg.content.match(/^!trump$/) || msg.content.match(/^!drump$/)){
 		const attachment = new Discord.MessageAttachment('./src/media/drump.png');
 		msg.channel.send(attachment);
 	}
@@ -176,7 +176,7 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
-	if(msg.content.match(/^!moon2Boo$/)){
+	if(msg.content.match(/^!moon2boo$/)){
 		const attachment = new Discord.MessageAttachment('./src/media/moon2Boo.png');
 		msg.channel.send(attachment);
 	}
@@ -193,20 +193,23 @@ client.on('message', msg => {
 	
 	if(msg.content.match(/^!wojack$/)){
 
-		var wojacksPath = path.join(process.cwd(), 'src/media/Wojacks');
-		var files = fs.readdirSync(wojacksPath);
-		var chosenFile = files[Math.floor(Math.random()*files.length)];
+		const wojacksPath = path.join(process.cwd(), 'src/media/Wojacks');
+		const files = fs.readdirSync(wojacksPath);
+		const chosenFile = files[Math.floor(Math.random()*files.length)];
 		const attachment = new Discord.MessageAttachment(path.join(wojacksPath, chosenFile));
 		msg.channel.send(attachment);
 	}
-
 	else if(msg.content.match(/^!pepe$/)){
-
-		
-		files = fs.readdirSync(path.join(__dirname,'media/Pepes'));
-		chosenFile = files[Math.floor(Math.random()*files.length)];
+		const files = fs.readdirSync(path.join(__dirname,'media/Pepes'));
+		const chosenFile = files[Math.floor(Math.random()*files.length)];
 		const attachment = new Discord.MessageAttachment(path.join(__dirname, 'media/Pepes/', chosenFile));
 		msg.channel.send(attachment);
+	}
+	else if(msg.content.match(/^!feelinglucky$/)){
+		const files = fs.readdirSync(path.join(__dirname,'media/Asciiart'));
+		const chosenFile = files[Math.floor(Math.random()*files.length)];
+		const data = fs.readFileSync(path.join(__dirname, 'media/Asciiart/', chosenFile));
+		msg.channel.send(data.toString());
 	}
 
 });
