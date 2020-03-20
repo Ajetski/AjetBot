@@ -145,5 +145,10 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
+	if(msg.content.match(/^!geckw$/)){
+		const attachment = new Discord.MessageAttachment('./src/media/geckw.png');
+		msg.channel.send(attachment);
+	}
+
 
 });
