@@ -31,7 +31,7 @@ client.on('message', msg => {
 		TEST
 	============
 	*/
-	if(msg.content.match(/^!ping$/,"i")){
+	if(msg.content.match(/^!ping$/)){
 		msg.reply('pong');
 	}
 
