@@ -36,6 +36,7 @@ client.on('message', msg => {
 	}
 
 	if(msg.content.match(/^!update$/)){
+		msg.reply('Updating...');
 		exec('../deploy/deploy.sh');
 	}
 
@@ -176,7 +177,7 @@ client.on('message', msg => {
 	}
 
 	if(msg.content.match(/^!poggy$/)){
-		const attachment = new Discord.MessageAttachment('./src/media/moon2Poggy.png');
+		const attachment = new Discord.MessageAttachment('./src/media/moon2poggy.png');
 		msg.channel.send(attachment);
 	}
 
