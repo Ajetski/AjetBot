@@ -91,7 +91,7 @@ client.on('message', msg => {
 		msg.channel.send(attachment);
 	}
 
-	if(msg.content.match(msg.content.match(/^!feelsbadman$/))){
+	if(msg.content.match(/^!feelsbadman$/)){
 		const attachment = new Discord.MessageAttachment('./src/media/feelBad.png');
 		msg.channel.send(attachment);
 	}
