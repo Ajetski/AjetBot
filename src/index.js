@@ -14,6 +14,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const client = new Discord.Client();
+const axios = require('axios');
 
 require('dotenv').config();
 
@@ -259,6 +260,31 @@ client.on('message', msg => {
 	if(cont.match(/^!labs$/)){
 		const attachment = new Discord.MessageAttachment('./src/media/tarkov/labs.png');
 		msg.channel.send(attachment);
+	}
+
+	if(msg.content.startsWith('!owrank')) {
+		const username = encodeURIComponent(msg.content.substring(7).trim());
+		const url = 'https://public-api.tracker.gg/v2/overwatch/standard/profile/battlenet/';
+		console.log(username);
+		if(username.length > 0) {
+			if(username.includes('%23')) {
+				axios.get(url + username, {
+					headers: {
+						'TRN-Api-Key': process.env.TRN_KEY
+					}
+				})
+					.then(function(response) {
+						msg.reply('Your Win/Loss Ratio is ' + response.data.data.segments[1].stats.wlPercentage.displayValue);
+					})
+					.catch(function(e) {
+						console.error(e);
+					});
+			} else {
+				msg.reply('The username must include a #');
+			}		
+		} else {
+			msg.reply('You must include a username');
+		}
 	}
 
 });
