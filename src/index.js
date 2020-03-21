@@ -227,37 +227,37 @@ client.on('message', msg => {
 	*/
 
 	if(cont.match(/^!customs$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/customs.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/customs.png');
 		msg.channel.send(attachment);
 	}
 
 	if(cont.match(/^!factory$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/factory.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/factory.png');
 		msg.channel.send(attachment);
 	}
 
 	if(cont.match(/^!interchange$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/interchange.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/interchange.png');
 		msg.channel.send(attachment);
 	}
 
 	if(cont.match(/^!reserve$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/reserve.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/reserve.png');
 		msg.channel.send(attachment);
 	}
 
 	if(cont.match(/^!woods$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/woods.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/woods.png');
 		msg.channel.send(attachment);
 	}
 
 	if(cont.match(/^!shoreline$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/shoreline.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/shoreline.png');
 		msg.channel.send(attachment);
 	}
 
 	if(cont.match(/^!labs$/)){
-		const attachment = new Discord.MessageAttachment('./src/tarkov/labs.png');
+		const attachment = new Discord.MessageAttachment('./src/media/tarkov/labs.png');
 		msg.channel.send(attachment);
 	}
 
