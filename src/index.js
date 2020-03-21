@@ -23,6 +23,9 @@ client.login(process.env.BOT_TOKEN).catch( (err) => {
 
 client.once('ready', () => {
 	console.log('Working!!!');
+	client.channels.fetch('276171300970692608').then( (genchat) => {
+		genchat.send('I HAVE AWOKEN');
+	});
 });
 
 client.on('message', msg => {
