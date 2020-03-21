@@ -281,9 +281,29 @@ client.on('message', msg => {
 					}
 				})
 					.then(function(response) {
-						msg.reply('Your Win/Loss Ratio is ' + response.data.data.segments[1].stats.wlPercentage.displayValue);
+						const timePlayed = response.data.data.segments[1].stats.timePlayed.displayValue;
+						const wins = response.data.data.segments[1].stats.wins.displayValue;
+						const matchesPlayed = response.data.data.segments[1].stats.matchesPlayed.displayValue;
+						const timeSpentOnFire = response.data.data.segments[1].stats.timeSpentOnFire.displayValue;
+						const wlPercentage = response.data.data.segments[1].stats.wlPercentage.displayValue;
+						const medals = response.data.data.segments[1].stats.medals.displayValue;
+						const multiKills = response.data.data.segments[1].stats.multiKills.displayValue;
+						const kd = response.data.data.segments[1].stats.kd.displayValue;
+						msg.reply(
+							`here is the Information I was able to find:
+
+Time Played:								${timePlayed}
+Wins: 										${wins}
+Matches Played:								${matchesPlayed}
+Time Spent On Fire:							${timeSpentOnFire}
+Win/Loss Ratio:								${wlPercentage}
+# of Medals:								${medals}
+# of Multi-Kills:							${multiKills}
+KD Ratio:									${kd}
+							`);
 					})
 					.catch(function(e) {
+						msg.reply('Whoops, there was an error! Wait a few minutes and try again.');
 						console.error(e);
 					});
 			} else {
