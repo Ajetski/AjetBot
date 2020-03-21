@@ -24,9 +24,9 @@ client.login(process.env.BOT_TOKEN).catch( (err) => {
 
 client.once('ready', () => {
 	console.log('Working!!!');
-	client.channels.fetch('276171300970692608')
+	client.channels.fetch(process.env.DEFAULT_CHANNEL)
 		.then( (genchat) => {
-			genchat.send('I HAVE AWOKEN');
+			genchat.send('I\'m up!');
 		})
 		.catch( () => {
 			console.log('Did not find a channel with matching ID');
@@ -48,7 +48,9 @@ client.on('message', msg => {
 
 	if(cont.match(/^!update$/)){
 		msg.reply('Updating...');
-		exec(`bash ${path.join(__dirname,'../deploy/deploy.sh')}`);
+		exec(`node "${path.join(__dirname,'../deploy/deploy.js')}`, () => {
+			process.exit();
+		});
 	}
 
 	/*
