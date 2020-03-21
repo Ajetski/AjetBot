@@ -9,12 +9,12 @@ Documentation Referenced: https://discord.js.org/
 
 */
 
-const { exec } = require('child_process');
 const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const client = new Discord.Client();
 const axios = require('axios');
+const deploy = require('../deploy/deploy');
 
 require('dotenv').config();
 
@@ -48,9 +48,7 @@ client.on('message', msg => {
 
 	if(cont.match(/^!update$/)){
 		msg.reply('Updating...');
-		exec(`node "${path.join(__dirname,'../deploy/deploy.js')}`, () => {
-			process.exit();
-		});
+		deploy();
 	}
 
 	/*
