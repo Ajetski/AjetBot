@@ -5,10 +5,8 @@
 
 const { exec } = require('child_process');
 
-exec('cd ../', () => {
-	exec('git pull', () => {
-		exec('node src/index.js', () => {
-			process.kill();
-		});
-	});
-});
+const redeploy = () => {
+	exec('cd .. && git pull && node src/index.js', () => {process.kill();});
+};
+
+module.exports = redeploy;
