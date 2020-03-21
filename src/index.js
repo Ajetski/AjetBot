@@ -24,7 +24,7 @@ client.login(process.env.BOT_TOKEN).catch( (err) => {
 
 client.once('ready', () => {
 	console.log('Working!!!');
-	client.channels.fetch('276171300970692608')
+	client.channels.fetch(process.env.DEFAULT_CHANNEL)
 		.then( (genchat) => {
 			genchat.send('I\'m up!');
 		})
