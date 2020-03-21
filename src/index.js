@@ -48,7 +48,7 @@ client.on('message', msg => {
 
 	if(cont.match(/^!update$/)){
 		msg.reply('Updating...');
-		exec('bash ', path.join(__dirname,'../deploy/deploy.sh'));
+		exec(`bash ${path.join(__dirname,'../deploy/deploy.sh')}`);
 	}
 
 	/*
