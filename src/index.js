@@ -274,7 +274,6 @@ client.on('message', msg => {
 	if(msg.content.startsWith('!owrank')) {
 		const username = encodeURIComponent(msg.content.substring(7).trim());
 		const url = 'https://public-api.tracker.gg/v2/overwatch/standard/profile/battlenet/';
-		console.log(username);
 		if(username.length > 0) {
 			if(username.includes('%23')) {
 				axios.get(url + username, {
@@ -294,15 +293,14 @@ client.on('message', msg => {
 						msg.reply(
 							`here is the Information I was able to find:
 
-Time Played:								${timePlayed}
-Wins: 										${wins}
-Matches Played:								${matchesPlayed}
-Time Spent On Fire:							${timeSpentOnFire}
-Win/Loss Ratio:								${wlPercentage}
-# of Medals:								${medals}
-# of Multi-Kills:							${multiKills}
-KD Ratio:									${kd}
-							`);
+Time Played:\t\t\t\t\t|\t\t${timePlayed}
+Wins: \t\t\t\t\t\t\t\t|\t\t${wins}
+Matches Played: \t\t\t|\t\t${matchesPlayed}
+Time Spent On Fire:	\t|\t\t${timeSpentOnFire}
+Win/Loss Ratio: \t\t\t|\t\t${wlPercentage}
+# of Medals: \t\t\t\t\t|\t\t${medals}
+# of Multi-Kills:\t\t\t\t|\t\t${multiKills}
+KD Ratio:  \t\t\t\t\t\t|\t\t${kd}`);
 					})
 					.catch(function(e) {
 						msg.reply('Whoops, there was an error! Wait a few minutes and try again.');
