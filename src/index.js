@@ -14,6 +14,4 @@ modules_folders.forEach(folderName => {
 	});
 });
 
-console.log(my_modules);
-
 module.exports = my_modules;
