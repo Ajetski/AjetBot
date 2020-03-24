@@ -1,4 +1,4 @@
-const deploy = require('../deploy');
+const deploy = require('../../deploy');
 
 const regex = /^!update$/i;
 

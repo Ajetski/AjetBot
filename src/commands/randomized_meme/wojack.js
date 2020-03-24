@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
-const path = require('path');
 const fs = require('fs');
 
-const regex = /^!pepe$/i;
+const regex = /^!wojack$/i;
 
 const func = (msg) => {
-	const files = fs.readdirSync('./media/Pepes');
+	const wojacksPath = './media/Wojacks/';
+	const files = fs.readdirSync(wojacksPath);
 	const chosenFile = files[Math.floor(Math.random()*files.length)];
-	const attachment = new Discord.MessageAttachment('media/Pepes/' + chosenFile);
+	const attachment = new Discord.MessageAttachment(wojacksPath + chosenFile);
 	msg.channel.send(attachment);
 };
 
