@@ -6,7 +6,7 @@
 const { exec } = require('child_process');
 
 const redeploy = () => {
-	exec('cd .. && git pull && node src/index.js', () => {process.kill();});
+	exec('cd .. && git pull && node src/app.js', () => {process.kill();});
 };
 
 module.exports = redeploy;
