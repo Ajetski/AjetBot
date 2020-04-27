@@ -16,9 +16,12 @@ module.exports = {
                     body: words[2],
                 };
                 request(options, (err, res) => {
-                    if (err)
+                    if (err){
+                        console.log("Err:", err);
                         return msg.channel.send("Error: API is not working. Try again in a couple of minutes.");
+                    }
                     try{
+                        console.log(res);
                         const user = JSON.parse(res.body)[0];
                         console.log(user);
                         // console.log(typeof(user.perfs));
@@ -34,6 +37,7 @@ module.exports = {
                         output += user.perfs.correspondence ? `Correspondence: ${user.perfs.correspondence.rating}${user.perfs.correspondence.prov ? '?' : ''}\n` : '';
                         msg.channel.send(output);
                     } catch(err2){
+                        console.log(err2);
                         return msg.channel.send("Error: Invalid syntax error. Usage: !lichess user <username>");
                     }
                 });
