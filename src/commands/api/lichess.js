@@ -2,7 +2,6 @@ module.exports = {
 	regex: /^!lichess .*$/i,
 
     func: (msg) => {
-        console.log(process.env.LICHESS_API_KEY)
         words = msg.content.split(" ");
 		if (words.length === 3) {
             if (words[0] === "!lichess" && words[1] === "user") {
@@ -22,12 +21,8 @@ module.exports = {
                         return msg.channel.send("Error: API is not working. Try again in a couple of minutes.");
                     }
                     try{
-                        console.log(res);
                         const user = JSON.parse(res.body)[0];
                         console.log(user);
-                        // console.log(typeof(user.perfs));
-                        // console.log(user.perfs);
-                        // console.log(user.perfs.rapid);
                         var output = `User: ${user.username}\n`;
                         output += `Online: ${user.online}\n`
                         output += user.perfs.ultraBullet ? `Ultra Bullet: ${user.perfs.ultraBullet.rating}${user.perfs.ultraBullet.prov ? '?' : ''}\n` : '';
