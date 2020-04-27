@@ -1,7 +1,8 @@
 module.exports = {
 	regex: /^!lichess .*$/i,
 
-	func: (msg) => {
+    func: (msg) => {
+        console.log(process.env.LICHESS_API_KEY)
         words = msg.content.split(" ");
 		if (words.length === 3) {
             if (words[0] === "!lichess" && words[1] === "user") {
