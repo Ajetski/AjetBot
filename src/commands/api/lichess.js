@@ -38,6 +38,20 @@ module.exports = {
                     }
                 });
             }
+            else if (words[0] === "!lichess" && words[1] === "challenge") {
+                const request = require("request");
+                const options = {
+                    method: "POST",
+                    url: "https://lichess.org/api/challenge/" + words[2],
+                    headers: {
+                        Authorization: "Bearer " + process.env.LICHESS_API_KEY,
+                        "Content-Type": "text/plain",
+                    }
+                };
+                request(options, (err, res) => {
+                    msg.reply("AjetBot has challenged " + words[2] + " on https://lichess.org");
+                });
+            }
         }
 	},
 };
