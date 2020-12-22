@@ -46,7 +46,7 @@ client.once('ready', () => {
 							.catch(console.error);
 					}
 				});
-				let randomTime = Math.round(Math.random() * (10000 - 500)) + 500;
+				let randomTime = Math.round(Math.random() * (60000 - 10000 + 1)) + 10000;
 				setTimeout(nameChange, randomTime);
 			}
 			nameChange();
