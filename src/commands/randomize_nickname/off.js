@@ -7,7 +7,7 @@ const func = (msg) => {
     const fileName = path.join(__dirname, '../../../media/names.txt')
     const people = JSON.parse(fs.readFileSync(fileName).toString());
     let splitString = msg.content.split(' ');
-    let userID = splitString[1].substr(3, splitString[1].length - 4);
+    let userID = splitString[1].replace(/\D/g, '');
     if (msg.member.roles.cache.has(process.env.MOD_ROLE)) {
         let guild = msg.client.guilds.cache.get(process.env.SERVER_ID);
         if (guild.member(userID)) {
