@@ -9,13 +9,25 @@ const func = (msg) => {
     let splitString = msg.content.split(' ');
     let userID = splitString[1].substr(3, splitString[1].length - 4);
     let removeName = msg.content.substr(17 + userID.length);
-    if (people.hasOwnProperty(userID)) {
-        people[userID].names = people[userID].names.filter(name => name !== removeName);
+    if (msg.member.roles.highest == process.env.MOD_ROLE) {
+        let guild = msg.client.guilds.cache.get(process.env.SERVER_ID);
+        if (guild.member(userID)) {
+            if (people.hasOwnProperty(userID)) {
+                people[userID].names = people[userID].names.filter(name => name !== removeName);
+                msg.channel.send("Name \"" + removeName + "\" removed. The list of names for " + splitString[1] + " is now: " + people[userID].names);
+            }
+            else {
+                msg.channel.send("User does not have a list of nicknames.");
+            }
+            fs.writeFileSync(fileName, JSON.stringify(people));
+        }
+        else {
+            msg.reply("The username you entered does not exist in this server.");
+        }
     }
     else {
-        msg.reply("User does not have a list of nicknames.");
+        msg.reply("You do not have the moderator role. Do not try again.")
     }
-    fs.writeFileSync(fileName, JSON.stringify(people));
 }
 
 module.exports = {

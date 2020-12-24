@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const { GuildMember } = require('discord.js');
 
 const regex = /^!addname .*$/i;
 
@@ -10,16 +9,28 @@ const func = (msg) => {
     let splitString = msg.content.split(' ');
     let userID = splitString[1].substr(3, splitString[1].length - 4);
     let newName = msg.content.substr(14 + userID.length);
-    if (people.hasOwnProperty(userID)) {
-        people[userID].names.push(newName);
+    if (msg.member.roles.highest == process.env.MOD_ROLE) {
+        let guild = msg.client.guilds.cache.get(process.env.SERVER_ID);
+        if (guild.member(userID)) {
+            if (people.hasOwnProperty(userID)) {
+                people[userID].names.push(newName);
+            }
+            else {
+                people[userID] = {
+                    names: [newName],
+                    enabled: true
+                };
+            }
+            fs.writeFileSync(fileName, JSON.stringify(people));
+            msg.channel.send("Name \"" + newName + "\" added. The list of names for " + splitString[1] + " is now: " + people[userID].names);
+        }
+        else {
+            msg.reply("The username you entered does not exist in this server.");
+        }
     }
     else {
-        people[userID] = {
-            names: [newName],
-            enabled: true
-        };
+        msg.reply("You do not have the moderator role. Do not try again.")
     }
-    fs.writeFileSync(fileName, JSON.stringify(people));
 }
 
 module.exports = {
