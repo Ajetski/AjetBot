@@ -9,7 +9,7 @@ const func = (msg) => {
     let splitString = msg.content.split(' ');
     let userID = splitString[1].substr(3, splitString[1].length - 4);
     let newName = msg.content.substr(14 + userID.length);
-    if (msg.member.roles.highest == process.env.MOD_ROLE) {
+    if (msg.member.roles.cache.has(process.env.MOD_ROLE)) {
         let guild = msg.client.guilds.cache.get(process.env.SERVER_ID);
         if (guild.member(userID)) {
             if (people.hasOwnProperty(userID)) {
