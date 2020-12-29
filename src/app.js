@@ -42,11 +42,20 @@ client.once('ready', () => {
 							.then(member => {
 								const index = Math.floor(Math.random() * people[userID].names.length);
 								member.setNickname(people[userID].names[index]);
+								if (people[userID].names == '') {
+									people[userID].enabled = false;
+									member.setNickname('');
+									fs.writeFileSync(fileName, JSON.stringify(people));
+									client.channels.fetch(process.env.BOT_CHANNEL)
+										.then(channel => channel.send("The name randomizer for <@" + userID + "> is now OFF due to lack of nicknames."))
+										.catch(console.error);
+								}
 							})
 							.catch(console.error);
 					}
 				});
 				let randomTime = Math.round(Math.random() * (60000 - 10000 + 1)) + 10000;
+				console.log(randomTime);
 				setTimeout(nameChange, randomTime);
 			}
 			nameChange();
