@@ -13,7 +13,13 @@ const func = (msg) => {
         let guild = msg.client.guilds.cache.get(process.env.SERVER_ID);
         if (guild.member(userID)) {
             if (people.hasOwnProperty(userID)) {
-                people[userID].names.push(newName);
+                if (people[userID].names.includes(newName)) {
+                    msg.channel.send("Name \"" + newName + "\" already exists for " + splitString[1] + ". Their current list of names is: " + JSON.stringify(people[userID].names));
+                    return;
+                }
+                else {
+                    people[userID].names.push(newName);
+                }
             }
             else {
                 people[userID] = {
